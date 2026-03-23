@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Scouty | Find Open Summer Camp Spots</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        body { font-family: 'Inter', sans-serif; }
+        .bg-test-blue { background-color: #1E293B; }
+        .text-test-blue { color: #1E293B; }
+        .btn-test { background-color: #3B82F6; transition: all 0.3s ease; }
+        .btn-test:hover { background-color: #2563EB; transform: translateY(-2px); }
+        .modal-overlay { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.7); z-index: 50; }
+    </style>
+</head>
+<body class="bg-slate-50 text-slate-900">
+
+    <!-- Navigation -->
+    <nav class="p-6 max-w-7xl mx-auto flex justify-between items-center">
+        <div class="text-2xl font-black tracking-tighter text-blue-600 flex items-center gap-2">
+            SCOUTY
+        </div>
+        <button onclick="openModal()" class="hidden md:block font-semibold text-sm bg-white border border-slate-200 px-4 py-2 rounded-full hover:bg-slate-50 transition">
+            Join 2026 Waitlist
+        </button>
+    </nav>
+
+    <!-- Hero Section -->
+    <header class="max-w-7xl mx-auto px-6 py-12 md:py-24 grid md:grid-cols-2 gap-12 items-center">
+        <div>
+            <div class="inline-block bg-blue-100 text-blue-800 text-xs font-bold px-3 py-1 rounded-full mb-4 uppercase tracking-widest">
+                Philly Suburbs Beta
+            </div>
+            <h1 class="text-5xl md:text-6xl font-extrabold leading-tight mb-6">
+                Stop the Summer Camp Scramble.
+            </h1>
+            <p class="text-xl text-slate-600 mb-8 leading-relaxed">
+                Scouty is an AI-powered concierge for parents. We call the camps, verify real-time availability, and secure your spot so you can reclaim your weekend.
+            </p>
+            <button onclick="openModal()" class="btn-test text-white text-lg font-bold px-8 py-4 rounded-xl shadow-lg w-full md:w-auto">
+                Find Open Camps Near Me
+            </button>
+        </div>
+        <div class="relative">
+            <div class="bg-white p-6 rounded-2xl shadow-xl border border-slate-100">
+                <div class="flex items-center gap-3 mb-4">
+                    <div class="w-10 h-10 bg-blue-600 rounded-full flex items-center justify-center text-white font-bold">S</div>
+                    <div>
+                        <p class="text-sm font-bold tracking-tight">Scouty AI Agent</p>
+                        <p class="text-xs text-slate-400">Scanning Chester County...</p>
+                    </div>
+                </div>
+                <div class="space-y-3">
+                    <div class="bg-slate-100 p-3 rounded-lg text-sm italic text-slate-500">"Calling local programs to check July availability..."</div>
+                    <div class="bg-blue-50 p-3 rounded-lg text-sm border border-blue-100">
+                        <span class="font-bold text-blue-700">Spot Found!</span> Openings verified for your age group. 4 minutes ago.
+                    </div>
+                </div>
+            </div>
+            <div class="absolute -bottom-6 -left-6 w-24 h-24 bg-blue-200 rounded-full mix-blend-multiply filter blur-xl opacity-70"></div>
+        </div>
+    </header>
+
+    <!-- The Struggle Section -->
+    <section class="bg-slate-900 text-white py-20">
+        <div class="max-w-4xl mx-auto px-6 text-center">
+            <h2 class="text-3xl md:text-4xl font-bold mb-6">The Struggle is Real</h2>
+            <p class="text-lg text-slate-400 mb-0">
+                It’s late March. The big camps sold out in January, the township websites are crashing, and you just need to find a safe, fun place for your children for the summer.
+            </p>
+            <p class="text-xl font-semibold mt-6 text-blue-400">
+                Stop refreshing browser tabs. Get real-time data on who has an open spot right now.
+            </p>
+        </div>
+    </section>
+
+    <!-- How it Works -->
+    <section class="py-24 max-w-7xl mx-auto px-6">
+        <h2 class="text-3xl font-bold text-center mb-16">How Scouty Works</h2>
+        <div class="grid md:grid-cols-3 gap-12">
+            <div class="text-center">
+                <div class="w-16 h-16 bg-blue-100 text-blue-600 rounded-full flex items-center justify-center text-2xl font-bold mx-auto mb-6">1</div>
+                <h3 class="text-xl font-bold mb-3">Define Your Search</h3>
+                <p class="text-slate-600">Enter your zip code, requested weeks, and your children's interests.</p>
+            </div>
+            <div class="text-center">
+                <div class="w-16 h-16 bg-blue-100 text-blue-600 rounded-full flex items-center justify-center text-2xl font-bold mx-auto mb-6">2</div>
+                <h3 class="text-xl font-bold mb-3">AI Does the Work</h3>
+                <p class="text-slate-600">Our agent contacts local day camps and clinics to verify <strong>live</strong> inventory for those specific dates.</p>
+            </div>
+            <div class="text-center">
+                <div class="w-16 h-16 bg-blue-100 text-blue-600 rounded-full flex items-center justify-center text-2xl font-bold mx-auto mb-6">3</div>
+                <h3 class="text-xl font-bold mb-3">Secure Your Spot</h3>
+                <p class="text-slate-600">Review options with verified openings and safety scores. Click to book instantly.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Pricing Section -->
+    <section class="py-24 max-w-5xl mx-auto px-6">
+        <h2 class="text-4xl font-extrabold text-center mb-16">Simple Pricing for Busy Parents</h2>
+        <div class="grid md:grid-cols-2 gap-8">
+            <!-- Option 1 -->
+            <div class="border border-slate-200 p-8 rounded-3xl bg-white shadow-sm flex flex-col">
+                <h3 class="text-2xl font-bold mb-2">Basic Access</h3>
+                <p class="text-4xl font-black mb-6">Free</p>
+                <ul class="space-y-4 mb-8 flex-grow">
+                    <li class="flex items-center gap-2 text-slate-600 italic">✓ Directory of local programs</li>
+                    <li class="flex items-center gap-2 text-slate-600 italic">✓ Community ratings</li>
+                    <li class="flex items-center gap-2 text-slate-400 italic">✕ Self-service availability check</li>
+                </ul>
+                <button onclick="openModal()" class="w-full py-4 border-2 border-slate-200 rounded-xl font-bold hover:bg-slate-50 transition">Get Started</button>
+            </div>
+            <!-- Option 2 -->
+            <div class="border-4 border-blue-500 p-8 rounded-3xl bg-white shadow-xl relative flex flex-col">
+                <div class="absolute -top-4 left-1/2 -translate-x-1/2 bg-blue-500 text-white px-4 py-1 rounded-full text-sm font-bold uppercase tracking-widest">Recommended</div>
+                <h3 class="text-2xl font-bold mb-2">Scouty Concierge</h3>
+                <p class="text-4xl font-black mb-6">$19 <span class="text-lg font-normal text-slate-400">/ season</span></p>
+                <ul class="space-y-4 mb-8 flex-grow text-slate-700">
+                    <li class="flex items-center gap-2 font-semibold text-blue-700">✓ Real-time AI availability scanning</li>
+                    <li class="flex items-center gap-2 font-semibold text-blue-700">✓ Automated phone verification</li>
+                    <li class="flex items-center gap-2 font-semibold text-blue-700">✓ Priority spot matching</li>
+                </ul>
+                <button onclick="openModal()" class="w-full py-4 btn-test text-white rounded-xl font-bold shadow-lg uppercase tracking-tight">Activate AI Concierge</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Modal -->
+    <div id="modalOverlay" class="modal-overlay items-center justify-center p-4">
+        <div class="bg-white max-w-md w-full rounded-3xl p-8 shadow-2xl relative">
+            <div class="text-center">
+                <h3 class="text-2xl font-extrabold mb-4">We're scaling up!</h3>
+                <p class="text-slate-600 mb-6">
+                    Due to high demand, <strong>Scouty</strong> is currently in a closed beta for the 2026 season in the Greater Philly area.
+                </p>
+                <form onsubmit="handleSubmit(event)" class="space-y-4">
+                    <input type="email" required placeholder="Email Address" class="w-full px-4 py-3 border border-slate-200 rounded-xl">
+                    <button type="submit" class="w-full py-4 btn-test text-white rounded-xl font-bold">Join the Waitlist</button>
+                </form>
+                <button onclick="closeModal()" class="mt-4 text-slate-400 text-sm underline">Close</button>
+            </div>
+        </div>
+    </div>
+
+    <div id="successMsg" class="hidden fixed bottom-10 right-10 bg-blue-600 text-white px-6 py-4 rounded-2xl shadow-2xl z-[60]">
+        You're on the list!
+    </div>
+
+    <script>
+        const modal = document.getElementById('modalOverlay');
+        const successMsg = document.getElementById('successMsg');
+        function openModal() { modal.style.display = 'flex'; }
+        function closeModal() { modal.style.display = 'none'; }
+        function handleSubmit(e) {
+            e.preventDefault();
+            closeModal();
+            successMsg.classList.remove('hidden');
+            setTimeout(() => { successMsg.classList.add('hidden'); }, 4000);
+        }
+    </script>
+</body>
+</html>
